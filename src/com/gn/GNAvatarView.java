@@ -35,6 +35,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/12/2018
+ * Create a shape with image for avatar view.
  */
 @DefaultProperty("image")
 public class GNAvatarView extends Region {
@@ -88,7 +89,7 @@ public class GNAvatarView extends Region {
         registerListeners();
         registerBinds();
 
-        setType(AvatarType.RECT);
+        setType(AvatarType.CIRCLE);
         setPrefSize(prefWidth, prefHeight);
 
         setStrokeWidth(2);
@@ -111,7 +112,6 @@ public class GNAvatarView extends Region {
     }
 
     private void registerListeners(){
-
         image.addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 if (newValue != oldValue) {
@@ -197,6 +197,4 @@ public class GNAvatarView extends Region {
     public void setImagePattern(ImagePattern imagePattern) {
         this.imagePattern.set(imagePattern);
     }
-
-
 }
