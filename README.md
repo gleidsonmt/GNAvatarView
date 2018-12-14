@@ -6,7 +6,35 @@
 
 <h1></h1>
 
-# GNAvatarView
-Component avatar view for javafx-8
+<p align="center">
+  <img src="src/logo.png"  />
+</p>
 
-![gif](src/com/gn/gif.gif)
+<h1></h1>
+<h6 align="center"> This project is part of the set of custom components created for JavaFx. </h6>
+
+<h1></h1>
+
+<h1> GNAvatarView </h1>
+
+<h5 > 
+  The AvatarView is a simple component used to view one image with a custom avatar.
+ 
+</h5>
+
+ > Create a shape with image for avatar view.
+
+<h1></h1>
+
+<h5>Basic Usage</h5>
+
+```java
+GNAvatarView avatarView = new GNAvatarView();
+avatarView.setImage(new Image("smile.jpg"));
+```
+
+<h1></h1>
+
+<h5>View</h5>
+
+<p align="center"><img src="src/com/gn/gif.gif"/></p>
