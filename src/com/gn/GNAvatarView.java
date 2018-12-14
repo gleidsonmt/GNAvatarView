@@ -33,9 +33,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 /**
+ * AvatarView is a simple component used to view one image with a custom avatar.
+ * Create a shape with image for avatar view.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/12/2018
- * Create a shape with image for avatar view.
+ *
  */
 @DefaultProperty("image")
 public class GNAvatarView extends Region {
