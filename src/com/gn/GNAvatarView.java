@@ -22,10 +22,9 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
@@ -41,31 +40,32 @@ import javafx.scene.shape.Rectangle;
  *
  */
 @DefaultProperty("image")
+@SuppressWarnings("unused")
 public class GNAvatarView extends Region {
 
-    private double prefWidth  = 200D;
-    private double prefHeight = 200D;
+    private final Circle      circle    = new Circle();
+    private final Rectangle   rectangle = new Rectangle();
 
-    private Circle      circle    = new Circle();
-    private Rectangle   rectangle = new Rectangle();
+    private final ObjectProperty<Image>         image = new SimpleObjectProperty<>(this, "image");
+    private final ObjectProperty<ImagePattern>  imagePattern = new SimpleObjectProperty<>(this, "imagePattern");
+    private final ObjectProperty<AvatarType>    type = new SimpleObjectProperty<>(this, "avatarType");
+    private final ObjectProperty<Paint>         stroke = new SimpleObjectProperty<>(this, "stroke");
+    private final DoubleProperty                strokeWidth = new SimpleDoubleProperty(this, "strokeWidth");
 
-    private ObjectProperty<Image> image = new SimpleObjectProperty<>(this, "image");
-    private ObjectProperty<ImagePattern> imagePattern = new SimpleObjectProperty<>(this, "imagePattern");
-    private ObjectProperty<AvatarType> type = new SimpleObjectProperty<>(this, "avatarType");
-    private ObjectProperty<Paint> stroke = new SimpleObjectProperty<>(this, "stroke");
-    private DoubleProperty strokeWidth = new SimpleDoubleProperty(this, "strokeWidth");
+    private String nameImage;
+    private String path;
 
-    private ChangeListener<Bounds> circleListener = (observable, oldValue, newValue) -> {
+    private final ChangeListener<Bounds> circleListener = (observable, oldValue, newValue) -> {
         double width = newValue.getWidth() / 2;
         double height = newValue.getHeight() / 2;
-        double size = width < height ? width : height;
+        double size = Math.min(width, height);
 
         circle.setRadius(size - (getStrokeWidth() / 2));
         circle.setCenterY(height);
         circle.setCenterX(width);
     };
 
-    private ChangeListener<Bounds> rectListener = (observable, oldValue, newValue) -> {
+    private final ChangeListener<Bounds> rectListener = (observable, oldValue, newValue) -> {
         double width = newValue.getWidth() ;
         double height = newValue.getHeight();
 
@@ -83,31 +83,47 @@ public class GNAvatarView extends Region {
         rectangle.setY( (newValue.getHeight() / 2) - (rectangle.getHeight() / 2));
     };
 
+
     public GNAvatarView() {
         this(null);
     }
 
-    public GNAvatarView(Image image){
+    public GNAvatarView(String path){
+        this(path, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+    }
+
+    public GNAvatarView(double width, double height){
+        this(null, width, height);
+    }
+
+    public GNAvatarView(String path, double width, double height) {
+
+        this.getStyleClass().add("gn-avatar-view");
 
         registerListeners();
         registerBinds();
 
-        setType(AvatarType.CIRCLE);
-        setPrefSize(prefWidth, prefHeight);
+        setType(AvatarType.RECT);
+        setPrefSize(width, height);
 
         setStrokeWidth(2);
         setStroke(Color.WHITE);
 
-        if(image != null) this.imagePattern.set(new ImagePattern(image));
+//        this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+
+        if(path != null) this.imagePattern.set(new ImagePattern(new Image(path)));
     }
 
     private void registerBinds(){
         circle.fillProperty().bind(imagePattern);
         circle.strokeProperty().bind(stroke);
         circle.strokeWidthProperty().bind(strokeWidth);
+
         rectangle.fillProperty().bind(imagePattern);
         rectangle.strokeProperty().bind(stroke);
+        double prefHeight = 200D;
         rectangle.setHeight(prefHeight);
+        double prefWidth = 200D;
         rectangle.setWidth(prefWidth);
         rectangle.strokeWidthProperty().bind(strokeWidth);
         rectangle.setArcHeight(20D);

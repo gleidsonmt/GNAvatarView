@@ -13,7 +13,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Image image = new Image(getClass().getResource("smile.jpg").toExternalForm());
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(new GNAvatarView(image), 300, 275));
+
+        GNAvatarView avatarView = new GNAvatarView("/com/gn/smile.jpg", 1000,300);
+//        GNAvatarView avatarView = new GNAvatarView();
+//        avatarView.setImage(new Image(getClass().getResource("/com/gn/SimpleLightGreen.jpg").toExternalForm()));
+
+        primaryStage.setScene(new Scene(avatarView));
         primaryStage.show();
     }
 
