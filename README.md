@@ -37,4 +37,4 @@ avatarView.setImage(new Image("smile.jpg"));
 
 <h5>View</h5>
 
-<p align="center"><img src="src/com/gn/gif.gif"/></p>
+<p align="center"><img src="src/main/com/gn/gif.gif"/></p>
