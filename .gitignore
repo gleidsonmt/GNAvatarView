@@ -3,3 +3,7 @@
 /out/**
 
 GNAvatarView.iml
+/.gradle/
+/gradle/
+/build/
+/gradle.properties
