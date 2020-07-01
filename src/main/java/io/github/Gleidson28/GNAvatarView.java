@@ -33,11 +33,12 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 /**
- * AvatarView is a simple component used to view one image with a custom avatar.
+ * AvatarView is a simple component used to view one image as a custom avatar.
  * Create a shape with image for avatar view.
  *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/12/2018
+ * Review on  01/07/2020
  *
  */
 @DefaultProperty("image")
