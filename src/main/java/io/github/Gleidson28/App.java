@@ -18,25 +18,39 @@
 package io.github.Gleidson28;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-//        Image image = new Image(getClass().getResource("smile.jpg").toExternalForm());
-        primaryStage.setTitle("Hello World");
+    public void start(Stage stage) throws Exception{
+        stage.setTitle("View Samples");
 
-        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300);
-//        GNAvatarView avatarView = new GNAvatarView();
-//        avatarView.setImage(new Image(getClass().getResource("/com/gn/SimpleLightGreen.jpg").toExternalForm()));
+        HBox content = new HBox();
+        content.setAlignment(Pos.CENTER);
+        content.setPadding(new Insets(10D));
+        content.setSpacing(10D);
 
-        primaryStage.setScene(new Scene(avatarView));
-        primaryStage.show();
+        GNAvatarView rectAvatar = new GNAvatarView("smile.jpg", 200,200, AvatarType.RECT);
+        rectAvatar.setStroke(Color.BLACK);
+
+        GNAvatarView circleAvatar = new GNAvatarView("smile.jpg", 200,200, AvatarType.CIRCLE);
+        circleAvatar.setStroke(Color.BLACK);
+
+        GNAvatarView circleDash = new GNAvatarView("smile.jpg", 200,200, AvatarType.CIRCLE);
+        circleDash.setStroke(Color.BLACK);
+        circleDash.setStrokeDashArray(10D);
+        circleDash.setStrokeDashOffset(6D);
+
+        content.getChildren().addAll(rectAvatar, circleAvatar, circleDash);
+
+        stage.setScene(new Scene(content));
+        stage.show();
     }
 
 

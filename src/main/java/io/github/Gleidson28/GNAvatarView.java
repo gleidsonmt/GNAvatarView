@@ -31,6 +31,9 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.SVGPath;
+
+import java.awt.*;
 
 /**
  * AvatarView is a simple component used to view one image as a custom avatar.
@@ -52,6 +55,7 @@ public class GNAvatarView extends Region {
     private final ObjectProperty<ImagePattern>  imagePattern = new SimpleObjectProperty<>(this, "imagePattern");
     private final ObjectProperty<AvatarType>    type = new SimpleObjectProperty<>(this, "avatarType");
     private final ObjectProperty<Paint>         stroke = new SimpleObjectProperty<>(this, "stroke");
+    private final ObjectProperty<Double>        strokeDashOffset = new SimpleObjectProperty<>(this, "strokeDashOffset");
     private final DoubleProperty                strokeWidth = new SimpleDoubleProperty(this, "strokeWidth");
 
     private String nameImage;
@@ -85,20 +89,23 @@ public class GNAvatarView extends Region {
         rectangle.setY( (newValue.getHeight() / 2) - (rectangle.getHeight() / 2));
     };
 
-
     public GNAvatarView() {
         this(null);
     }
 
     public GNAvatarView(String path){
-        this(path, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+        this(path, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, AvatarType.RECT);
     }
 
     public GNAvatarView(double width, double height){
-        this(null, width, height);
+        this(null, width, height, AvatarType.RECT);
     }
 
-    public GNAvatarView(String path, double width, double height) {
+    public GNAvatarView(double width, double height, AvatarType type){
+        this(null, width, height, type);
+    }
+
+    public GNAvatarView(String path, double width, double height, AvatarType type) {
 
         this.getStyleClass().add("gn-avatar-view");
 
@@ -111,6 +118,8 @@ public class GNAvatarView extends Region {
         setStrokeWidth(2);
         setStroke(Color.WHITE);
 
+        setType(type);
+
 //        this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
         if(path != null) this.imagePattern.set(new ImagePattern(new Image(path)));
@@ -120,6 +129,7 @@ public class GNAvatarView extends Region {
         circle.fillProperty().bind(imagePattern);
         circle.strokeProperty().bind(stroke);
         circle.strokeWidthProperty().bind(strokeWidth);
+        circle.strokeDashOffsetProperty().bind(strokeDashOffset);
 
         rectangle.fillProperty().bind(imagePattern);
         rectangle.strokeProperty().bind(stroke);
@@ -130,6 +140,8 @@ public class GNAvatarView extends Region {
         rectangle.strokeWidthProperty().bind(strokeWidth);
         rectangle.setArcHeight(20D);
         rectangle.setArcWidth(20D);
+
+        rectangle.strokeDashOffsetProperty().bind(strokeDashOffset);
     }
 
     private void registerListeners(){
@@ -183,6 +195,19 @@ public class GNAvatarView extends Region {
         this.stroke.set(stroke);
     }
 
+
+    public Double getStrokeDashOffset() {
+        return strokeDashOffset.get();
+    }
+
+    public ObjectProperty<Double> strokeDashOffsetProperty() {
+        return strokeDashOffset;
+    }
+
+    public void setStrokeDashOffset(Double strokeDashOffset) {
+        this.strokeDashOffset.set(strokeDashOffset);
+    }
+
     public double getStrokeWidth() {
         return strokeWidth.get();
     }
@@ -215,7 +240,8 @@ public class GNAvatarView extends Region {
         return imagePattern;
     }
 
-    public void setImagePattern(ImagePattern imagePattern) {
-        this.imagePattern.set(imagePattern);
+    public void setStrokeDashArray(Double... number){
+        this.circle.getStrokeDashArray().setAll(number);
+        this.rectangle.getStrokeDashArray().setAll(number);
     }
 }
