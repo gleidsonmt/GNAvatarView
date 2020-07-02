@@ -1,10 +1,12 @@
 
 
-![Version](https://img.shields.io/badge/Version-1.0.2-green.svg?style=for-the-badge)
-[![Release](https://img.shields.io/badge/Release-v1.0.2--gold-yellow.svg?style=for-the-badge)](https://github.com/Gleidson28/GNAvatarView/releases/tag/1.0)
+![Version](https://img.shields.io/badge/Version-1.0.3-green.svg?style=for-the-badge)
+[![Release](https://img.shields.io/badge/Release-v1.0.3--gold-yellow.svg?style=for-the-badge)](https://github.com/Gleidson28/GNAvatarView/releases/tag/1.0)
 [![License](https://img.shields.io/github/license/Gleidson28/GNAvatarView.svg?style=for-the-badge)](https://github.com/Gleidson28/GNCarousel/blob/master/LICENSE) 
 
-https://img.shields.io/maven-central/v/io.github.Gleidson28/GNAvatarView/0.1?style=for-the-badge
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.Gleidson28/GNAvatarView.svg?style=for-the-badge)](https://search.maven.org/search?q=g:%22io.github.Gleidson28%22%20AND%20a:%22GNAvatarView%22)
+
+
 
 <h1></h1>
 
