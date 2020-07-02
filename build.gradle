@@ -21,7 +21,7 @@ repositories {
 }
 
 group = 'io.github.Gleidson28'
-version = '1.0.2'
+version = '1.0.3'
 mainClassName = 'io.github.Gleidson28.App'
 
 apply plugin: 'com.bmuschko.nexus'

@@ -44,7 +44,7 @@ public class Test extends Application {
     private void createDefaultAvatarWithPath(Stage stage){
         stage.setTitle("Create Default Avatar With Path");
 
-        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300);
+        GNAvatarView avatarView = new GNAvatarView("smile.jpg");
 
         stage.setScene(new Scene(avatarView));
         stage.show();
@@ -64,7 +64,7 @@ public class Test extends Application {
     private void createRectAvatar(Stage stage){
         stage.setTitle("Create Rect Avatar");
 
-        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300);
+        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300, AvatarType.RECT);
         avatarView.setType(AvatarType.RECT);
         stage.setScene(new Scene(avatarView));
         stage.show();
@@ -74,7 +74,7 @@ public class Test extends Application {
     private void createCircleAvatar(Stage stage){
         stage.setTitle("Create Rect Avatar");
 
-        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300);
+        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300, AvatarType.CIRCLE);
         avatarView.setType(AvatarType.CIRCLE);
         stage.setScene(new Scene(avatarView));
         stage.show();
@@ -84,7 +84,7 @@ public class Test extends Application {
     private void testWithStroke(Stage stage){
         stage.setTitle("Create Rect Avatar");
 
-        GNAvatarView avatarView = new GNAvatarView("smile.jpg", 1000,300);
+        GNAvatarView avatarView = new GNAvatarView("smile.jpg");
         avatarView.setType(AvatarType.CIRCLE);
         avatarView.setStroke(Color.RED);
         avatarView.setStrokeWidth(20);
