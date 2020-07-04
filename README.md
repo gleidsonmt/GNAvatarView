@@ -42,7 +42,7 @@ dependencies {
 ### How to Include In Maven Project
 ```xml
 <dependency>
-  <groupId>io.github.gleidson28</groupId>
+  <groupId>io.github.Gleidson28</groupId>
   <artifactId>GNAvatarView</artifactId>
   <version>1.0.5</version>
 </dependency>
