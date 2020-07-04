@@ -21,10 +21,18 @@ repositories {
 }
 
 group = 'io.github.Gleidson28'
-version = '1.0.3'
-mainClassName = 'io.github.Gleidson28.App'
+version = '1.0.5'
+mainClassName = 'io.github.gleidson28.App'
 
 apply plugin: 'com.bmuschko.nexus'
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'io.github.gleidson28.App'
+        )
+    }
+}
 
 modifyPom {
     project {
@@ -54,8 +62,6 @@ modifyPom {
                 email = 'gleidisonmt@gmail.com'
             }
         }
-
-
     }
 }
 

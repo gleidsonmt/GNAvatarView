@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.Gleidson28;
+package io.github.gleidson28;
 
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.DoubleProperty;
@@ -25,15 +25,12 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.SVGPath;
-
-import java.awt.*;
 
 /**
  * AvatarView is a simple component used to view one image as a custom avatar.
@@ -107,7 +104,7 @@ public class GNAvatarView extends Region {
 
     public GNAvatarView(String path, double width, double height, AvatarType type) {
 
-        this.getStyleClass().add("gn-avatar-view");
+        getStyleClass().add("gn-avatar-view");
 
         registerListeners();
         registerBinds();
@@ -120,7 +117,7 @@ public class GNAvatarView extends Region {
 
         setType(type);
 
-//        this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+////        this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
         if(path != null) this.imagePattern.set(new ImagePattern(new Image(path)));
     }

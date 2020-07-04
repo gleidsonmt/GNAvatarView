@@ -23,7 +23,6 @@
 
 <h5 > 
   The AvatarView is a simple component used to view one image with a custom avatar.
- 
 </h5>
 
  > Create a shape with image for avatar view.
@@ -35,7 +34,7 @@
 
 ```groovy
 dependencies {
-    compile 'io.github.Gleidson28:GNAvatarView:1.0.2'
+    compile 'io.github.Gleidson28:GNAvatarView:1.0.5'
 }
 ```
 
@@ -43,9 +42,9 @@ dependencies {
 ### How to Include In Maven Project
 ```xml
 <dependency>
-  <groupId>io.github.Gleidson28</groupId>
+  <groupId>io.github.gleidson28</groupId>
   <artifactId>GNAvatarView</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 

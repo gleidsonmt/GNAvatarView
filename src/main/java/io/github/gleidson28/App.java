@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.Gleidson28;
+package io.github.gleidson28;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -25,7 +25,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class App extends Application {
+
+    @Override
+    public void init() {
+        System.out.println("Hellow word");
+    }
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -54,7 +61,7 @@ public class App extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
     }
 }
