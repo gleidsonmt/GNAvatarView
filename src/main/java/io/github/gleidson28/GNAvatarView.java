@@ -39,21 +39,20 @@ import javafx.scene.shape.Rectangle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/12/2018
  * Review on  01/07/2020
- *
  */
 @DefaultProperty("image")
 @SuppressWarnings("unused")
 public class GNAvatarView extends Region {
 
-    private final Circle      circle    = new Circle();
-    private final Rectangle   rectangle = new Rectangle();
+    private final Circle circle = new Circle();
+    private final Rectangle rectangle = new Rectangle();
 
-    private final ObjectProperty<Image>         image = new SimpleObjectProperty<>(this, "image");
-    private final ObjectProperty<ImagePattern>  imagePattern = new SimpleObjectProperty<>(this, "imagePattern");
-    private final ObjectProperty<AvatarType>    type = new SimpleObjectProperty<>(this, "avatarType");
-    private final ObjectProperty<Paint>         stroke = new SimpleObjectProperty<>(this, "stroke");
-    private final ObjectProperty<Double>        strokeDashOffset = new SimpleObjectProperty<>(this, "strokeDashOffset");
-    private final DoubleProperty                strokeWidth = new SimpleDoubleProperty(this, "strokeWidth");
+    private final ObjectProperty<Image> image = new SimpleObjectProperty<>(this, "image");
+    private final ObjectProperty<ImagePattern> imagePattern = new SimpleObjectProperty<>(this, "imagePattern");
+    private final ObjectProperty<AvatarType> type = new SimpleObjectProperty<>(this, "avatarType");
+    private final ObjectProperty<Paint> stroke = new SimpleObjectProperty<>(this, "stroke");
+    private final ObjectProperty<Double> strokeDashOffset = new SimpleObjectProperty<>(this, "strokeDashOffset");
+    private final DoubleProperty strokeWidth = new SimpleDoubleProperty(this, "strokeWidth");
 
     private String nameImage;
     private String path;
@@ -69,11 +68,11 @@ public class GNAvatarView extends Region {
     };
 
     private final ChangeListener<Bounds> rectListener = (observable, oldValue, newValue) -> {
-        double width = newValue.getWidth() ;
+        double width = newValue.getWidth();
         double height = newValue.getHeight();
 
         // Configure aspect ratio
-        if(height > width){
+        if (height > width) {
             rectangle.setWidth(width - strokeWidth.get());
             rectangle.setHeight(width - strokeWidth.get());
         } else {
@@ -82,23 +81,23 @@ public class GNAvatarView extends Region {
         }
 
         // Centralize rectangle
-        rectangle.setX( (newValue.getWidth() / 2) - (rectangle.getWidth() / 2) );
-        rectangle.setY( (newValue.getHeight() / 2) - (rectangle.getHeight() / 2));
+        rectangle.setX((newValue.getWidth() / 2) - (rectangle.getWidth() / 2));
+        rectangle.setY((newValue.getHeight() / 2) - (rectangle.getHeight() / 2));
     };
 
     public GNAvatarView() {
         this(null);
     }
 
-    public GNAvatarView(String path){
+    public GNAvatarView(String path) {
         this(path, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, AvatarType.RECT);
     }
 
-    public GNAvatarView(double width, double height){
+    public GNAvatarView(double width, double height) {
         this(null, width, height, AvatarType.RECT);
     }
 
-    public GNAvatarView(double width, double height, AvatarType type){
+    public GNAvatarView(double width, double height, AvatarType type) {
         this(null, width, height, type);
     }
 
@@ -119,10 +118,10 @@ public class GNAvatarView extends Region {
 
 ////        this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
-        if(path != null) this.imagePattern.set(new ImagePattern(new Image(path)));
+        if (path != null) this.imagePattern.set(new ImagePattern(new Image(path)));
     }
 
-    private void registerBinds(){
+    private void registerBinds() {
         circle.fillProperty().bind(imagePattern);
         circle.strokeProperty().bind(stroke);
         circle.strokeWidthProperty().bind(strokeWidth);
@@ -141,7 +140,7 @@ public class GNAvatarView extends Region {
         rectangle.strokeDashOffsetProperty().bind(strokeDashOffset);
     }
 
-    private void registerListeners(){
+    private void registerListeners() {
         image.addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 if (newValue != oldValue) {
@@ -151,19 +150,19 @@ public class GNAvatarView extends Region {
         });
 
         type.addListener((observable, oldValue, newValue) -> {
-            switch (newValue){
-                case CIRCLE:
+            switch (newValue) {
+                case CIRCLE -> {
                     getChildren().clear();
                     getChildren().add(circle);
                     layoutBoundsProperty().removeListener(rectListener);
                     layoutBoundsProperty().addListener(circleListener);
-                    break;
-                case RECT:
+                }
+                case RECT -> {
                     getChildren().clear();
                     getChildren().add(rectangle);
                     layoutBoundsProperty().removeListener(circleListener);
                     layoutBoundsProperty().addListener(rectListener);
-                    break;
+                }
             }
         });
     }
@@ -237,7 +236,7 @@ public class GNAvatarView extends Region {
         return imagePattern;
     }
 
-    public void setStrokeDashArray(Double... number){
+    public void setStrokeDashArray(Double... number) {
         this.circle.getStrokeDashArray().setAll(number);
         this.rectangle.getStrokeDashArray().setAll(number);
     }

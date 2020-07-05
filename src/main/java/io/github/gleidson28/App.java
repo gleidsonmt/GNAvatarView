@@ -25,14 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class App extends Application {
-
-    @Override
-    public void init() {
-        System.out.println("Hellow word");
-    }
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -61,7 +54,7 @@ public class App extends Application {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         launch(args);
     }
 }

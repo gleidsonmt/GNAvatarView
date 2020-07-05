@@ -20,13 +20,14 @@ import io.github.gleidson28.GNAvatarView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  30/06/2020
  */
-public class Test extends Application {
+public class Test  extends Application {
 
 
     @Override
@@ -39,12 +40,12 @@ public class Test extends Application {
     }
 
     private void createDefaultAvatarWithPath(Stage stage){
-//        stage.setTitle("Create Default Avatar With Path");
-//
-//        GNAvatarView avatarView = new GNAvatarView("smile.jpg");
-//
-//        stage.setScene(new Scene(avatarView));
-//        stage.show();
+        stage.setTitle("Create Default Avatar With Path");
+
+        GNAvatarView avatarView = new GNAvatarView("smile.jpg");
+
+        stage.setScene(new Scene(avatarView));
+        stage.show();
     }
 
     private void createDefaultAvatarWithImage(Stage stage){
@@ -79,14 +80,14 @@ public class Test extends Application {
     }
 
     private void testWithStroke(Stage stage){
-//        stage.setTitle("Create Rect Avatar");
-//
-//        GNAvatarView avatarView = new GNAvatarView("smile.jpg");
-//        avatarView.setType(AvatarType.CIRCLE);
-//        avatarView.setStroke(Color.RED);
-//        avatarView.setStrokeWidth(20);
-//        stage.setScene(new Scene(avatarView));
-//        stage.show();
+        stage.setTitle("Create Rect Avatar");
+
+        GNAvatarView avatarView = new GNAvatarView("smile.jpg");
+        avatarView.setType(AvatarType.CIRCLE);
+        avatarView.setStroke(Color.RED);
+        avatarView.setStrokeWidth(20);
+        stage.setScene(new Scene(avatarView));
+        stage.show();
 
     }
 
